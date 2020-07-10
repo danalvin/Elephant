@@ -1,0 +1,7 @@
+main 
+elephant 
+
+config.toml
+.env
+
+storage/logs/*
