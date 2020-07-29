@@ -6,6 +6,7 @@ require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-sql-driver/mysql v1.5.0
+	github.com/jasonlvhit/gocron v0.0.0-20200423141508-ab84337f7963
 	github.com/jinzhu/gorm v1.9.14
 	github.com/lib/pq v1.7.0
 	github.com/mitchellh/mapstructure v1.3.2 // indirect

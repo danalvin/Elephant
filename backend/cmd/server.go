@@ -26,7 +26,7 @@ func init() {
 	rootCmd.AddCommand(serverCmd)
 }
 
-func run() { 
+func run() {
 
 	// set routes
 	r := routes.Router()

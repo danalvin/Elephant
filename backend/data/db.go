@@ -1,4 +1,4 @@
-package connections
+package data
 
 import (
 	"elephant/config"
@@ -6,23 +6,24 @@ import (
 	"fmt"
 	"time"
 
-	_ "github.com/go-sql-driver/mysql" // mysql dialect
 	"github.com/jinzhu/gorm"
+
+	// db drivers
+	_ "github.com/go-sql-driver/mysql"           // mysql dialect
 	_ "github.com/jinzhu/gorm/dialects/postgres" //psql dialect
 	_ "github.com/lib/pq"
 )
 
-var db *gorm.DB
-
 var (
 	l   = log.GetLogger()
 	err error
+	db  *gorm.DB
+
+	cg = config.GetConfig()
 )
 
 // Auto Initiate db connection
 func init() {
-
-	cg := config.GetConfig()
 
 	// Set environment
 	env := cg.GetString("app.environment")
@@ -44,13 +45,6 @@ func init() {
 	case "mysql":
 		db, err = gorm.Open(dbDriver,
 			dbUser+":"+dbPass+"@tcp("+dbHost+":"+dbPort+")/"+dbName+"?charset=utf8&parseTime=True&loc=Local")
-
-		// enable db to handle GROUP BY
-		_, err := db.DB().Exec(`SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))`)
-
-		if err != nil {
-			l.Errorf("cannot replace @@sql_mode to 'ONLY_FULL_GROUP_BY' : %v", err)
-		}
 	}
 
 	db.DB().SetMaxOpenConns(25)
