@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"elephant/services"
+
 	"github.com/jasonlvhit/gocron"
 	"github.com/spf13/cobra"
 )
@@ -20,10 +22,13 @@ func init() {
 }
 
 func start() {
-	l.Printf("Starting background jobs....\n")
+
+	service := services.NewService()
+
+	service.Logger.Printf("Starting background jobs....\n")
 
 	// List all tasks
-	gocron.Every(1).Minutes().Do()
+	gocron.Every(1).Friday().Do(service.Disburse)
 
 	//run scheduler
 	<-gocron.Start()

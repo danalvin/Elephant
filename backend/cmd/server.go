@@ -8,6 +8,8 @@ import (
 	"os/signal"
 	"time"
 
+	"elephant/config"
+	"elephant/log"
 	"elephant/routes"
 
 	"github.com/spf13/cobra"
@@ -28,12 +30,17 @@ func init() {
 
 func run() {
 
+	var (
+		conf = config.GetConfig()
+		logger = log.GetLogger()
+	)
+
 	// set routes
 	r := routes.Router()
 
 	// server configurations
 	s := &http.Server{
-		Addr:           fmt.Sprintf(":%v", cmd.Conf.GetString("app.port")),
+		Addr:           fmt.Sprintf(":%v", conf.GetString("app.port")),
 		Handler:        r,
 		IdleTimeout:    1 * time.Second,
 		ReadTimeout:    1 * time.Second,
@@ -43,8 +50,8 @@ func run() {
 
 	// server goroutine
 	go func() {
-		cmd.Logger.Infof("Server up and running on http://localhost%s", s.Addr)
-		cmd.Logger.Fatal("Go run go! ", s.ListenAndServe())
+		logger.Infof("Server up and running on http://localhost%s", s.Addr)
+		logger.Fatal("Go run go! ", s.ListenAndServe())
 	}()
 
 	// for graceful shutdown - channel recieves signal
@@ -55,13 +62,13 @@ func run() {
 
 	// blocks until a signal is recieved
 	sig := <-c
-	cmd.Logger.Println("Signal :", sig)
+	logger.Println("Signal :", sig)
 
 	// context. cancel func complains if ignored.
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
-	cmd.Logger.Println("Server shutting down...")
+	logger.Println("Server shutting down...")
 	s.Shutdown(ctx)
 	os.Exit(0)
 }

@@ -29,7 +29,7 @@ type Gateway interface {
 	PayOne(account string, amount float64)
 
 	// PayBulk -
-	PayBulk([]*Payload) (*PaywayResponse, error)
+	PayBulk([]*Payload) ([]*PaywayResponse, error)
 
 	// PayMany - pay many wallets same amount
 	PayMany(accounts []AccountNumber, amount float64) (*PaywayResponse, error)
@@ -49,12 +49,13 @@ type Payload struct {
 
 // PaywayResponse -
 type PaywayResponse struct {
-	TransactionID string `json:"transaction_id"`
-	HTTPStatus    string `json:"http_status"`
-	Status        string `json:"status"`
-	IsSuccessful  bool   `json:"is_successful"`
-	StatusCode    string `json:"status_code"`
-	AccountBal    string `json:"account_balance"`
+	TransactionID string        `json:"transaction_id"`
+	AccountID     AccountNumber `json:"account_id"`
+	HTTPStatus    string        `json:"http_status"`
+	Status        string        `json:"status"`
+	IsSuccessful  bool          `json:"is_successful"`
+	StatusCode    string        `json:"status_code"`
+	AccountBal    string        `json:"account_balance"`
 }
 
 // Register -
@@ -105,9 +106,9 @@ func New() (*Payway, error) {
 	return &Payway{PayGateway: gateway}, nil
 }
 
-// Name -  
+// Name -
 func (p *Payway) Name() string {
-	
+
 	return p.Name()
 }
 
@@ -124,7 +125,7 @@ func (p *Payway) PayMany(accounts []AccountNumber, amount float64) (*PaywayRespo
 }
 
 // PayBulk -
-func (p *Payway) PayBulk(load []*Payload) (*PaywayResponse, error) {
+func (p *Payway) PayBulk(load []*Payload) ([]*PaywayResponse, error) {
 
 	return p.PayBulk(load)
 }
