@@ -28,7 +28,7 @@ func init() {
 	rootCmd.AddCommand(serverCmd)
 }
 
-// logger and configuration 
+// logger and configuration
 var (
 	conf   = config.GetConfig()
 	logger = log.GetLogger()

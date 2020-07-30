@@ -25,6 +25,7 @@ add additional constraints.
 + RUN - `make run` or `go run main.go serve`
 
 ### API Routes 
+We won't be needed API endpoints much.
 1. FOO             - `http://localhost:6060/api/v1/foo`  
 
 ## Technology Stack 
