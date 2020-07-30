@@ -28,12 +28,13 @@ func init() {
 	rootCmd.AddCommand(serverCmd)
 }
 
-func run() {
+// logger and configuration 
+var (
+	conf   = config.GetConfig()
+	logger = log.GetLogger()
+)
 
-	var (
-		conf = config.GetConfig()
-		logger = log.GetLogger()
-	)
+func run() {
 
 	// set routes
 	r := routes.Router()

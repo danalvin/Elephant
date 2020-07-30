@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"elephant/services"
+	"log"
 
 	"github.com/jasonlvhit/gocron"
 	"github.com/spf13/cobra"
@@ -22,6 +23,9 @@ func init() {
 }
 
 func start() {
+
+	// logging
+	log.Println("Starting payment background job ...")
 
 	service := services.NewService()
 

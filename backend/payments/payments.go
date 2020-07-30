@@ -11,7 +11,7 @@ var (
 	conf     = config.GetConfig()
 	l        = log.GetLogger()
 	mu       sync.RWMutex
-	gateways = make(map[string]Gateway)
+	gateways = make(map[string]Gateway) // cache
 )
 
 // Payway - payment gateway
@@ -45,6 +45,7 @@ type AccountNumber string
 type Payload struct {
 	AccountNumber string `json:"account_number"`
 	Amount        string `json:"amount"`
+	PaymentID     string `json:"payment_id"` // id of the transaction
 }
 
 // PaywayResponse -

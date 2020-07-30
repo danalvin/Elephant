@@ -45,6 +45,7 @@ title = "Elephant Configuration File"
     # DB Password
     pass = ""
 
+    
 [gateways]
     
     [gateways.payments]
@@ -53,4 +54,10 @@ title = "Elephant Configuration File"
 
         [gateways.payments.mpesa]   
 
+            # mpesa creds goes here 
+            api_key = ""
+
+        [gateways.payments.visa]   
+
+            # visa creds 
             api_key = ""

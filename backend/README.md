@@ -6,6 +6,8 @@ Using preconfigured Payment Gateway of Choice (MPesa/VISA/MasterCard), This serv
 automate payments of active workers on weekly basis. The design should facilitate user to
 add additional constraints.
 
+
+
 ```go
     go func(){
         log.Println("Where's my money?")
@@ -20,7 +22,7 @@ add additional constraints.
 ### Local Set Up  
 + Clone the [repo](https://github.com/vonmutinda/Elephant.git) 
 + Create `config.toml` using `config.toml.example` file. 
-+ RUN - `make run` or `go run main.go se`
++ RUN - `make run` or `go run main.go serve`
 
 ### API Routes 
 1. FOO             - `http://localhost:6060/api/v1/foo`  
