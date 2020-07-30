@@ -84,6 +84,8 @@ func (s *Service) savePayment(emp []models.Employee) error {
 
 	var (
 		err error
+		
+		// begin transaction - 
 		tx  = s.DB.Begin()
 	)
 
