@@ -89,6 +89,11 @@ func New() (*Payway, error) {
 		return nil, fmt.Errorf("No default payment gateway provided")
 	}
 
+	// acquare read mutex
+	mu.RLock()
+
+	defer mu.RUnlock()
+
 	// fetch gateway from cache
 	gateway, ok := gateways[provider]
 
