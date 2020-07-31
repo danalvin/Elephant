@@ -172,14 +172,11 @@ func getPassword() string {
 func securityCredential(initName string) string {
 
 	// 1. download cert
-	certPath := ""
+	certPath := "https://developer.safaricom.co.ke/sites/default/files/cert/cert_sandbox/cert.cer"
 	if env == "production" {
 		certPath = "https://developer.safaricom.co.ke/sites/default/files/cert/cert_prod/cert.cer"
 	}
-	certPath = "https://developer.safaricom.co.ke/sites/default/files/cert/cert_sandbox/cert.cer"
-
 	res, err := http.Get(certPath)
-
 	if err != nil {
 		log.Fatalf("cannot fetch cert : %v", err)
 	}
