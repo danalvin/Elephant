@@ -3,6 +3,7 @@ module elephant
 go 1.13
 
 require (
+	github.com/buger/jsonparser v1.0.0
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-sql-driver/mysql v1.5.0
@@ -15,6 +16,7 @@ require (
 	github.com/spf13/afero v1.3.1 // indirect
 	github.com/spf13/cobra v1.0.0
 	github.com/spf13/viper v1.7.0
+	github.com/stretchr/testify v1.4.0
 	github.com/uniplaces/carbon v0.1.6
 	golang.org/x/text v0.3.3 // indirect
 	gopkg.in/ini.v1 v1.57.0 // indirect

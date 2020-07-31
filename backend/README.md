@@ -7,7 +7,6 @@ automate payments of active workers on weekly basis. The design should facilitat
 add additional constraints.
 
 
-
 ```go
     go func(){
         log.Println("Where's my money?")

@@ -26,13 +26,13 @@ type Gateway interface {
 	New() error
 
 	// PayOne - pay to one wallet
-	PayOne(account string, amount float64)
+	PayOne(account AccountNumber, amount string, ref string) (*PaywayResponse, error)
 
 	// PayBulk -
 	PayBulk([]*Payload) ([]*PaywayResponse, error)
 
 	// PayMany - pay many wallets same amount
-	PayMany(accounts []AccountNumber, amount float64) (*PaywayResponse, error)
+	PayMany(accounts []AccountNumber, amount string) (*PaywayResponse, error)
 
 	// Balance - money in the account
 	Balance() (*PaywayResponse, error)
