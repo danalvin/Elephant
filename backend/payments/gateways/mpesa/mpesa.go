@@ -79,11 +79,11 @@ func (m *Mpesa) PayOne(account payments.AccountNumber, amount string, ref string
 	// prepare payload
 	payload := &B2C{
 		InitiatorName:      payer,
-		SecurityCredential: securityCredential("Safaricom007@"),
+		SecurityCredential: securityCredential(payer),
 		CommandID:          "SalaryPayment",
 		Amount:             amount,
-		PartyA:             "174379",
-		PartyB:             string(account),
+		PartyA:             "123454",
+		PartyB:             string("254722000000"),
 		Remarks:            "test transaction",
 		QueueTimeoutURL:    "https://test.com",
 		ResultsURL:         "https://test.com",
