@@ -1,0 +1,63 @@
+title = "Elephant Configuration File"
+
+# Main app
+[app]
+
+    #App Name
+    name = "elephant"
+
+    # HTTP server port.
+    port = "8080"
+    
+    # env
+    environment = "development"
+
+    # true or false
+    debug = true
+
+    # path to logfile
+    path_to_log_file = "./storage/logs"
+
+    # storage path
+    path_to_storage_dir = "./storage"
+
+    #string
+    api_key = "aHR0cHM6Ly93d3cuYmFzZTY0ZGVjb2RlLm9yZy8="
+
+# Database settings
+[database]
+
+    # Database driver "mysql" or "postgres"
+    driver = "mysql"
+
+    #Database Name
+    dbname = ""
+
+    # Database Host
+    host = "127.0.0.1"
+
+    # Database Port "3306" or "5432"
+    port = "3306"
+
+    # Database User
+    user = ""
+
+    # DB Password
+    pass = ""
+
+    
+[gateways]
+    
+    [gateways.payments]
+
+        default = "mpesa"
+
+        [gateways.payments.mpesa]   
+
+            # mpesa creds goes here 
+            api_key = ""
+
+        [gateways.payments.visa]   
+
+            # visa creds 
+            api_key = ""
